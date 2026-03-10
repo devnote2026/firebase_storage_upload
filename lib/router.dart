@@ -2,8 +2,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+
 import 'features/auth/login_screen.dart';
 import 'features/home/home_screen.dart';
+import 'features/auth/nickname_resister.dart';
 
 class AppRouter {
   static final _authNotifier =
@@ -35,6 +38,10 @@ class AppRouter {
         path: '/home',
         builder: (context, state) => const HomeScreen(),
       ),
+      GoRoute(
+        path: "/register",
+        builder: (context, state) => const NicknameResisterScreen(),
+),
     ],
   );
 }
