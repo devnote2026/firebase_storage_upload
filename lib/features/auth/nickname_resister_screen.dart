@@ -34,7 +34,7 @@ class _NicknameResisterScreenState extends State<NicknameResisterScreen> {
 
             ElevatedButton(
               onPressed: () {
-                // まだ何もしない
+                debugPrint (nicknameController.text);
               },
               child: const Text("登録"),
             )

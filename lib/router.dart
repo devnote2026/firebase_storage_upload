@@ -6,25 +6,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'features/auth/login_screen.dart';
 import 'features/home/home_screen.dart';
-import 'features/auth/nickname_resister.dart';
+import 'features/auth/nickname_resister_screen.dart';
 
 class AppRouter {
   static final _authNotifier =
       AuthStateNotifier(FirebaseAuth.instance.authStateChanges());
 
   static final GoRouter router = GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/nickname_resister',
     refreshListenable: _authNotifier,
     redirect: (context, state) {
       final user = FirebaseAuth.instance.currentUser;
       final isLogin = state.matchedLocation == '/login';
 
       if (user == null) {
-        return isLogin ? null : '/login';
+        return isLogin ? null : '/nickname_resister';
       }
 
       if (isLogin) {
-        return '/home';
+        return '/nickname_resister';
       }
 
       return null;
@@ -39,7 +39,7 @@ class AppRouter {
         builder: (context, state) => const HomeScreen(),
       ),
       GoRoute(
-        path: "/register",
+        path: "/nickname_resister",
         builder: (context, state) => const NicknameResisterScreen(),
 ),
     ],
