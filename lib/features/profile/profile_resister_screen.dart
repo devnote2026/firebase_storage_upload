@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:go_router/go_router.dart';
 
+import 'profile_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ProfileResisterScreen extends StatefulWidget {
   const ProfileResisterScreen({super.key});
 
@@ -13,6 +17,7 @@ class ProfileResisterScreen extends StatefulWidget {
 class _ProfileResisterScreenState extends State<ProfileResisterScreen> {
   File? image;
   ImagePicker picker = ImagePicker();
+  final profileService = ProfileService(); 
 
   Future<void> pickImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
@@ -24,6 +29,22 @@ class _ProfileResisterScreenState extends State<ProfileResisterScreen> {
     });
   }
 
+  Future<void> savePhoto() async {
+    if(image == null) return;
+
+    final uid = FirebaseAuth.instance.currentUser!.uid; 
+    final url = await profileService.uploadProfileImage(uid,image!);
+
+    //Cloud Firestore を更新
+    await FirebaseFirestore.instance
+                           .collection("users")
+                           .doc(uid)
+                           .update({
+                            "profileImageUrl": url,
+                            "needsProfilePhotoSetup": false
+                           });             
+    context.go('/home');
+  }
   void next(){
     context.go('/home');
   }
@@ -50,13 +71,12 @@ class _ProfileResisterScreenState extends State<ProfileResisterScreen> {
 
             const SizedBox(height: 30),
 
-            ElevatedButton(onPressed: next, child: Text("次へ")),
+            ElevatedButton(onPressed: savePhoto, child: Text("次へ")),
 
             const SizedBox(height: 30),
 
-            ElevatedButton(onPressed: (){
-              context.go('/home');
-            }, child: Text('スキップ')
+            ElevatedButton(onPressed: next,
+                           child: Text('スキップ')
             )
           ]
         ),
