@@ -13,18 +13,18 @@ class AppRouter {
       AuthStateNotifier(FirebaseAuth.instance.authStateChanges());
 
   static final GoRouter router = GoRouter(
-    initialLocation: '/nickname_resister',
+    initialLocation: '/login',
     refreshListenable: _authNotifier,
     redirect: (context, state) {
       final user = FirebaseAuth.instance.currentUser;
       final isLogin = state.matchedLocation == '/login';
 
       if (user == null) {
-        return isLogin ? null : '/nickname_resister';
+        return isLogin ? null : '/login';
       }
 
       if (isLogin) {
-        return '/nickname_resister';
+        return '/home';
       }
 
       return null;
