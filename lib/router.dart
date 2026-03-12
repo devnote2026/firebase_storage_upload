@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'features/auth/login_screen.dart';
 import 'features/home/home_screen.dart';
 import 'features/auth/nickname_resister_screen.dart';
+import 'features/profile/profile_resister_screen.dart';
 
 class AppRouter {
   static final _authNotifier =
@@ -41,7 +42,11 @@ class AppRouter {
       GoRoute(
         path: "/nickname_resister",
         builder: (context, state) => const NicknameResisterScreen(),
-),
+      ),
+      GoRoute(
+        path:"/profile_resister",
+        builder: (context, state) => const ProfileResisterScreen(),
+      )
     ],
   );
 }

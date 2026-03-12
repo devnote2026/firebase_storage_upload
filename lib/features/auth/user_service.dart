@@ -16,6 +16,8 @@ class UserService{
     await _db.collection("users").doc(uid).set({
       "nickname": nickname,
       "createdAt": FieldValue.serverTimestamp(),
+      "profileImageUrl":null,
+      "needsProfileSetup": true
     });
 
   }

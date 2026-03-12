@@ -44,7 +44,7 @@ class _NicknameResisterScreenState extends State<NicknameResisterScreen> {
                 final uid = FirebaseAuth.instance.currentUser!.uid;
 
                 await userService.createUser(nickname : nickname, uid: uid);
-                context.go('/home');
+                context.go('/profile_resister');
               },
               child: const Text("登録"),
             )
