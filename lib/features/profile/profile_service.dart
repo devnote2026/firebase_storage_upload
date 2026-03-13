@@ -1,3 +1,6 @@
+// 指定されたuid と画像をストレージに保存する
+//保存したURLを関数の呼び出し元に返す
+
 import "dart:io";
 import "package:firebase_storage/firebase_storage.dart";
 

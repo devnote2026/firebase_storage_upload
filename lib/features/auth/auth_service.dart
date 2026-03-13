@@ -1,3 +1,7 @@
+//ログインの処理をまとめている
+//Googleログイン画面の表示、選択されたアカウントでGoogleにログインする処理、取得したトークンでFirebaseにログインする処理をまとめている
+//ログアウトの機能もここでまとめる
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

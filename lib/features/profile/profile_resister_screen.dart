@@ -1,3 +1,6 @@
+//画像を選択するプログラム
+//選択された画像をストレージに保存する関数を呼び出し、保存されたURL をFirestoreに保存する
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';

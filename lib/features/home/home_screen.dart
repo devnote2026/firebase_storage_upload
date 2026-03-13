@@ -1,3 +1,6 @@
+//最終的にだとりつく画面
+//ログアウト機能を持つ
+
 import 'package:flutter/material.dart';
 import '../auth/auth_service.dart';
 

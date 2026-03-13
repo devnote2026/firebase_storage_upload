@@ -1,3 +1,9 @@
+//画面切り替えの設定を行う
+
+//ログイン状態に応じて画面を切り替える
+//ログイン状態を監視する
+//アプリを構成する画面の一覧をつくる
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

@@ -1,3 +1,6 @@
+// uid とニックネームをFirestoreに保存すると同時に、プロフィール画像が必要かどうかを保存する処理をまとめる
+// firestoreにすでにユーザーが存在するかを確認する処理をまとめる。
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserService{

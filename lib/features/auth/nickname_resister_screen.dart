@@ -1,3 +1,8 @@
+//ここはテキストボックスの表示を行う。
+//入力されたニックネームは別ファイルで定義したクラスを使って Firestoreに保存する
+
+//ニックネームがnullの場合の処理は実装していない
+
 import 'package:flutter/material.dart';
 import 'user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
